@@ -369,6 +369,224 @@ body {
 /* contact end */
 
 
+/* about */
+
+/* ABOUT PAGE CSS */
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('hero-placeholder.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+    padding: 0 2rem;
+}
+
+.hero-content h2 {
+    font-family: var(--font-head);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: auto;
+}
+
+/* About Grid - Story & Mission */
+.about-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 4rem 2rem;
+}
+
+.about-grid .story,
+.about-grid .mission {
+    flex: 1 1 45%;
+    background-color: var(--light-color);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.about-grid .story:hover,
+.about-grid .mission:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.about-grid h2 {
+    font-family: var(--font-kidif);
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.about-grid p {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+/* Team Section */
+.team-section {
+    text-align: center;
+    padding: 4rem 2rem;
+    background-color: var(--white);
+}
+
+.team-section h2 {
+    font-family: var(--font-head);
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.team-cards {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.team-card {
+    width: 250px;
+    background-color: var(--light-color);
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.team-card img {
+    width: 100%;
+    border-radius: 12%;
+    object-fit: cover;
+    height: 200px;
+    margin-bottom: 1rem;
+}
+
+.team-card h3 {
+    font-family: var(--font-head);
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.team-card p {
+    font-family: var(--font-body);
+    color: var(--text-color);
+    font-size: 0.95rem;
+}
+
+/* Get Involved Section */
+.get-involved {
+    padding: 4rem 2rem;
+    background-color: var(--light-color);
+    text-align: center;
+    border-radius: 12px;
+    max-width: 1000px;
+    margin: 2rem auto;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.get-involved h2 {
+    font-family: var(--font-head);
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.get-involved p {
+    font-family: var(--font-body);
+    color: var(--text-color);
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: auto;
+}
+
+.involve-options {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.involve-box {
+    flex: 1 1 250px;
+    background-color: var(--white);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.involve-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.involve-box h3 {
+    font-family: var(--font-kidif);
+    color: var(--secondary-color);
+    margin-bottom: 0.8rem;
+}
+
+.involve-box p {
+    font-family: var(--font-body);
+    color: var(--text-color);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.involve-box button {
+    padding: 0.8rem 1.5rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.involve-box button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .about-grid {
+        flex-direction: column;
+    }
+
+    .involve-options {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .team-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* about end */
+
 h1, h2, h3, h4 {
     font-family: 'Ubuntu', sans-serif;
     margin-bottom: 1rem;
