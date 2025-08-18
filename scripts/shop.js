@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             id: 8,
-            name: "Avocado",
+            name: "suya",
             image: "images/avacado.jpg",
             description: "Avocados provide healthy fats and fiber. Great for heart health and satiety.",
             benefits: ["Heart Health", "Healthy Fats", "Satiety"],
@@ -107,7 +107,8 @@ document.addEventListener('DOMContentLoaded', function() {
         fruitContainer.innerHTML = '';
         
         if (fruitsToDisplay.length === 0) {
-            fruitContainer.innerHTML = '<p class="no-results">No fruits match your search. Try a different term.</p>';
+            // fruitContainer.innerHTML = '<p class="no-results">Seems the herbs not on the list, contact us and well get it to you!.</p>';
+            fruitContainer.innerHTML = "<p>Seems the herbs not on the list, contact us and we'll get it to you!.</p>";
             return;
         }
         

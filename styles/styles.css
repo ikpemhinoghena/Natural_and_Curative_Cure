@@ -983,12 +983,12 @@ footer {
     cursor: pointer;
 }
 
-.filter-container select {
+/* .filter-container select {
     padding: 0.8rem;
     border: 1px solid #ddd;
     border-radius: 50px;
     min-width: 200px;
-}
+} */
 
 .fruit-grid {
     display: grid;
