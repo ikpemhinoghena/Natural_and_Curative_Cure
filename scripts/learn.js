@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const herbs = [
     {
       name: "Irish Moss",
-      image: "images/irish-moss.jpg",
+      image: "images/bellpepper.jpg",
       bio: "Irish Moss, a nutrient-dense seaweed, supports thyroid and gut health. Cures inflammation and may help with joint pain and digestive disorders. Traditionally used for hydration and mineral replenishment.",
       uses: ["Boosts immunity", "Supports thyroid", "Promotes healthy skin"]
     },
@@ -194,6 +194,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
   
 });
-
-
-
