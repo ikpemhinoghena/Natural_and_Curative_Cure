@@ -164,6 +164,41 @@ body {
   background: #e69500;
 }
 
+    /* the kini caution */
+
+/* --- Only for caution badge --- */
+.herb-card {
+  position: relative; /* enables absolute positioning for badge */
+}
+
+.herb-info {
+  position: relative;
+  padding-bottom: 64px; /* gives room so badge doesn't overlap text/buttons */
+}
+
+.herb-caution {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  background: #fff3cd;      /* soft warning */
+  color: #856404;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  line-height: 1.2;
+  max-width: 70%;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  pointer-events: none;      /* badge doesn’t block clicks */
+}
+
+.herb-caution small { 
+  display: inline-block; 
+}
+                    /* the kini caution */
+
 /* Responsive */
 @media (max-width: 768px) {
   .herb-card {
@@ -243,6 +278,8 @@ body {
 }
 
 /*  */
+
+
 
 
 
