@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       name: "Vernonia amygdalina (Bitter Leaf)",
-      image: "images/vernonia-amygdalina.jpg",
+      image: "images/Ha2XcQG3RDu5mXpqJgq4gn-1600-80.webp",
       bio: "Bitter Leaf is a West African staple herb with evidence for antidiabetic, anti-malarial and anti-inflammatory effects — commonly eaten as a vegetable or taken as decoction.",
       uses: [
         "Helps lower blood sugar (diabetes support)",
@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       name: "Annona muricata (Soursop / Graviola)",
-      image: "images/soursop.jpg",
+      image: "images/Soursop,_Annona_muricata.webp",
       bio: "Soursop is used traditionally against tumors and infections; lab studies show cytotoxic compounds (acetogenins) — supportive, not curative, and use with caution.",
       uses: [
         "Shows anticancer activity in lab studies",
