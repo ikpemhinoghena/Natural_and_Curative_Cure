@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       name: "Kigelia africana (Sausage Tree)",
-      image: "images/kigelia-africana.jpg",
+      image: "images/Kigelia_africana_compose.webp",
       bio: "Kigelia (Sausage Tree) is used across Africa for skin infections, wound healing and traditional tumor remedies; shows antimicrobial and anti-inflammatory activity.",
       uses: [
         "Topical support for skin infections and wounds",

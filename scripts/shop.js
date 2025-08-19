@@ -1,168 +1,315 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const fruitContainer = document.getElementById('fruit-container');
-    const searchInput = document.getElementById('fruit-search');
-    const benefitFilter = document.getElementById('benefit-filter');
-    
-    const fruits = [
-        {
-            id: 1,
-            name: "Apple",
-            image: "images/apple.jpg",
-            description: "Apples are rich in fiber and antioxidants. They help with digestion and heart health.",
-            benefits: ["Digestion", "Heart Health", "Immunity"],
-            nutrients: { calories: 52, carbs: "14g", fiber: "2.4g", vitaminC: "8% DV" },
-            season: "Fall",
-        },
-        {
-            id: 2,
-            name: "Banana",
-            image: "images/banana.jpg",
-            description: "Bananas are high in potassium and great for energy. They support muscle function.",
-            benefits: ["Energy", "Muscle Health", "Digestion"],
-            nutrients: { calories: 89, carbs: "23g", fiber: "2.6g", potassium: "12% DV" },
-            season: "Year-round",
-        },
-        {
-            id: 3,
-            name: "Orange",
-            image: "images/orange.jpg",
-            description: "Oranges are packed with Vitamin C. They boost immunity and skin health.",
-            benefits: ["Immunity", "Skin Health", "Hydration"],
-            nutrients: { calories: 47, carbs: "12g", fiber: "2.4g", vitaminC: "88% DV" },
-            season: "Winter",
-        },
-        {
-            id: 4,
-            name: "Blueberry",
-            image: "images/blueberry.jpg",
-            description: "Blueberries are antioxidant powerhouses. They support brain health and reduce inflammation.",
-            benefits: ["Brain Health", "Antioxidants", "Heart Health"],
-            nutrients: { calories: 57, carbs: "14g", fiber: "2.4g", vitaminK: "24% DV" },
-            season: "Summer",
-        },
-        {
-            id: 5,
-            name: "Strawberry",
-            image: "images/strawberry.jpg",
-            description: "Strawberries are rich in Vitamin C and manganese. Good for skin and blood sugar control.",
-            benefits: ["Skin Health", "Blood Sugar", "Immunity"],
-            nutrients: { calories: 32, carbs: "7.7g", fiber: "2g", vitaminC: "98% DV" },
-            season: "Spring",
-        },
-        {
-            id: 6,
-            name: "Mango",
-            image: "images/mango.jpg",
-            description: "Mangoes are high in Vitamin A and C. They support eye health and immunity.",
-            benefits: ["Eye Health", "Immunity", "Digestion"],
-            nutrients: { calories: 60, carbs: "15g", fiber: "1.6g", vitaminA: "15% DV" },
-            season: "Summer",
-        },
-        {
-            id: 7,
-            name: "Pineapple",
-            image: "images/pineapple.jpg",
-            description: "Pineapples contain bromelain enzyme. They aid digestion and reduce inflammation.",
-            benefits: ["Digestion", "Anti-inflammatory", "Immunity"],
-            nutrients: { calories: 50, carbs: "13g", fiber: "1.4g", manganese: "76% DV" },
-            season: "Year-round",
-        },
-        {
-            id: 8,
-            name: "suya",
-            image: "images/avacado.jpg",
-            description: "Avocados provide healthy fats and fiber. Great for heart health and satiety.",
-            benefits: ["Heart Health", "Healthy Fats", "Satiety"],
-            nutrients: { calories: 160, fat: "15g", fiber: "7g", potassium: "14% DV" },
-            season: "Year-round",
-        }
-    ];
-    
-    displayFruits(fruits);
-    
-    searchInput.addEventListener('input', function() {
-        const searchTerm = this.value.toLowerCase();
-        const filteredFruits = fruits.filter(fruit => 
-            fruit.name.toLowerCase().includes(searchTerm) || 
-            fruit.description.toLowerCase().includes(searchTerm)
-        );
-        displayFruits(filteredFruits);
-    });
-    
-    benefitFilter.addEventListener('change', function() {
-        const selectedBenefit = this.value;
-        if (!selectedBenefit) {
-            displayFruits(fruits);
-            return;
-        }
-        
-        const filteredFruits = fruits.filter(fruit => 
-            fruit.benefits.some(benefit => 
-                benefit.toLowerCase().includes(selectedBenefit.toLowerCase()))
-        );
-        displayFruits(filteredFruits);
-    });
-    
-    function displayFruits(fruitsToDisplay) {
-        fruitContainer.innerHTML = '';
-        
-        if (fruitsToDisplay.length === 0) {
-            // fruitContainer.innerHTML = '<p class="no-results">Seems the herbs not on the list, contact us and well get it to you!.</p>';
-            fruitContainer.innerHTML = "<p>Seems the herbs not on the list, contact us and we'll get it to you!.</p>";
-            return;
-        }
-        
-        fruitsToDisplay.forEach(fruit => {
-            const fruitElement = document.createElement('div');
-            fruitElement.className = 'fruit-item';
-            fruitElement.innerHTML = `          
-                <img src="${fruit.image}" alt="${fruit.name}" loading="lazy">
-                <div class="fruit-info">
-                    <h3>${fruit.name}</h3>
-                    <p>${fruit.description}</p>
-                    <div class="benefits">
-                        ${fruit.benefits.map(benefit => `<span class="benefit-tag">${benefit}</span>`).join('')}
-                    </div>
-                    <div class="fruit-buttons">
-                        <button class="view-details" data-id="${fruit.id}">View Details</button>
-                        <button class="add-to-cart" data-id="${fruit.id}">Add to Cart <i class="fas fa-cart-plus"></i></button>
-                    </div>
-                </div>
-            `;
-            fruitContainer.appendChild(fruitElement);
-        });
-        
-        document.querySelectorAll('.view-details').forEach(button => {
-            button.addEventListener('click', function() {
-                const fruitId = parseInt(this.getAttribute('data-id'));
-                const selectedFruit = fruits.find(fruit => fruit.id === fruitId);
-                showFruitDetails(selectedFruit);
-            });
-        });
+  const fruitContainer = document.getElementById('fruit-container');
+  const searchInput = document.getElementById('fruit-search');
+  const benefitFilter = document.getElementById('benefit-filter');
 
-        document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', function() {
-                const fruitId = parseInt(this.getAttribute('data-id'));
-                const selectedFruit = fruits.find(fruit => fruit.id === fruitId);
-                addToCart(selectedFruit);
-            });
-        });
+  // === HERBS ONLY (replaces fruits). Uses original 'fruits' variable name so your code works ===
+  const fruits = [
+    {
+      id: 1,
+      name: "Vernonia amygdalina (Bitter Leaf)",
+      image: "images/Ha2XcQG3RDu5mXpqJgq4gn-1600-80.webp",
+      description: "Bitter Leaf is a West African staple herb with evidence for antidiabetic, antimicrobial and anti-inflammatory effects.",
+      benefits: ["Blood Sugar (Diabetes)", "Antimicrobial/Antimalarial", "Anti-inflammatory (Lupus)"],
+      nutrients: { form: "Fresh leaves/decoction", dose: "Tea/decoction daily", safety: "Bitter; consult if on meds" },
+      season: "Year-round",
+    },
+    {
+      id: 2,
+      name: "Irish Moss (Chondrus crispus)",
+      image: "images/irish-moss-2.webp",
+      description: "Mineral-rich red seaweed supporting mucosal immunity, antiviral defense, and metabolic balance.",
+      benefits: ["Immunity/Antiviral (Herpes/HIV)", "Anti-inflammatory", "Gut & Metabolic Support"],
+      nutrients: { form: "Dried gel/powder", dose: "1–2 tsp/day", safety: "High iodine; caution in thyroid issues" },
+      season: "Year-round",
+    },
+    {
+      id: 3,
+      name: "Sutherlandia (Cancer Bush)",
+      image: "images/Lessertia_frutescens_1.webp",
+      description: "South African tonic with immune-modulating and anti-inflammatory properties used during chronic illness.",
+      benefits: ["Immune Modulation", "Anti-inflammatory", "Energy/Appetite Support"],
+      nutrients: { form: "Leaf capsules/tea", dose: "As directed", safety: "Avoid in pregnancy; autoimmune caution" },
+      season: "Year-round",
+    },
+    {
+      id: 4,
+      name: "Neem Leaves (Azadirachta indica)",
+      image: "images/Neem_tree_leaves.webp",
+      description: "Traditional antimicrobial/antiviral leaf used for infections, skin, and metabolic support.",
+      benefits: ["Antiviral (Herpes Support)", "Blood Sugar", "Skin & Detox"],
+      nutrients: { form: "Tea/leaves", dose: "Short courses", safety: "Avoid in pregnancy" },
+      season: "Year-round",
+    },
+    {
+      id: 5,
+      name: "Moringa oleifera (Miracle Tree)",
+      image: "images/moringa-870x455.webp",
+      description: "Nutrient-dense antioxidant herb for immunity, inflammation, and blood sugar control.",
+      benefits: ["Blood Sugar (Diabetes)", "Anti-inflammatory", "Immunity/Energy"],
+      nutrients: { form: "Leaf powder/capsules", dose: "1–2 tsp/day", safety: "May lower BP/BS; monitor meds" },
+      season: "Year-round",
+    },
+    {
+      id: 6,
+      name: "Artemisia afra (African Wormwood)",
+      image: "images/Artemisia afra (African Wormwood).avif",
+      description: "Trusted African herb for respiratory infections and immune support.",
+      benefits: ["Antimicrobial/Respiratory", "Immunity", "Anti-inflammatory"],
+      nutrients: { form: "Tea/decoction", dose: "Short courses", safety: "Avoid prolonged high use in pregnancy" },
+      season: "Year-round",
+    },
+    {
+      id: 7,
+      name: "Artemisia annua (Sweet Wormwood)",
+      image: "images/sweet-wormwood-artemisia-annua-primary-v2.webp",
+      description: "Source of artemisinin; traditionally for fevers/infections; researched for antiviral and anti-inflammatory actions.",
+      benefits: ["Antiviral Support", "Anti-inflammatory", "Fever/Infection Support"],
+      nutrients: { form: "Tea/extract", dose: "As directed", safety: "Not a drug substitute; pregnancy caution" },
+      season: "Year-round",
+    },
+    {
+      id: 8,
+      name: "Hypoxis hemerocallidea (African Potato)",
+      image: "images/Hypoxis hemerocallidea (African Potato).webp",
+      description: "Immune tonic with anti-inflammatory and antioxidant activity; used in chronic illness support.",
+      benefits: ["Immune Support", "Anti-inflammatory", "Blood Sugar Support"],
+      nutrients: { form: "Root extract", dose: "As directed", safety: "Possible interactions; consult" },
+      season: "Year-round",
+    },
+    {
+      id: 9,
+      name: "Phyllanthus niruri (Stonebreaker)",
+      image: "images/mediumPhyllanthus niruri (Stonebreaker).webp",
+      description: "Traditional liver/kidney herb with antiviral signals in lab studies and metabolic support.",
+      benefits: ["Liver Support", "Antiviral Signals", "Blood Sugar Support"],
+      nutrients: { form: "Tea/extract", dose: "Cycles", safety: "Avoid in pregnancy" },
+      season: "Year-round",
+    },
+    {
+      id: 10,
+      name: "Nigella sativa (Black Seed)",
+      image: "images/Nigella_ sativa.webp",
+      description: "Thymoquinone-rich immune/metabolic tonic used for antiviral support and inflammation control.",
+      benefits: ["Immunity/Antiviral", "Blood Sugar", "Anti-inflammatory"],
+      nutrients: { form: "Oil/capsules", dose: "½–1 tsp/day", safety: "May lower BP/BS" },
+      season: "Year-round",
+    },
+    {
+      id: 11,
+      name: "Turmeric (Curcuma longa)",
+      image: "images/Curcuma_longa_roots.webp",
+      description: "Curcumin-rich spice for inflammation reduction, metabolic and liver support.",
+      benefits: ["Anti-inflammatory (Lupus/Joint)", "Metabolic/Liver", "Antioxidant"],
+      nutrients: { form: "Powder/extract", dose: "With pepper/fat", safety: "Anticoagulant interaction" },
+      season: "Year-round",
+    },
+    {
+      id: 12,
+      name: "Peppermint",
+      image: "images/Pfefferminze_natur_peppermint3.webp",
+      description: "Gentle digestive and sinus-clearing support; useful for symptom relief.",
+      benefits: ["Digestion", "Sinus/Respiratory", "Headache Relief"],
+      nutrients: { form: "Tea/oil (diluted)", dose: "As needed", safety: "May trigger reflux in some" },
+      season: "Year-round",
+    },
+    {
+      id: 13,
+      name: "Prunus africana (African Cherry)",
+      image: "images/prunierdafrique.webp",
+      description: "Traditional bark remedy for prostate/urinary health with anti-inflammatory effects.",
+      benefits: ["Prostate/Urinary", "Anti-inflammatory", "Antioxidant"],
+      nutrients: { form: "Standardized extract", dose: "As directed", safety: "Source sustainably" },
+      season: "Year-round",
+    },
+    {
+      id: 14,
+      name: "Catharanthus roseus (Madagascar Periwinkle)",
+      image: "images/vecteezy_catharanthus-roseus-flower_40151788.webp",
+      description: "Potent alkaloid-containing plant; traditional use for infections/metabolic issues; pharmaceutical anticancer source.",
+      benefits: ["Antimicrobial Signals", "Metabolic Support", "Caution: Potent"],
+      nutrients: { form: "Not for self-medication", dose: "—", safety: "Clinical guidance only" },
+      season: "Year-round",
+    },
+    {
+      id: 15,
+      name: "Kigelia africana (Sausage Tree)",
+      image: "images/Kigelia_africana_compose.webp",
+      description: "Topical favorite for skin infections and wound care; antimicrobial and anti-inflammatory activity.",
+      benefits: ["Skin/Wound", "Antimicrobial", "Anti-inflammatory"],
+      nutrients: { form: "Topical extract", dose: "Apply as directed", safety: "Internal use needs guidance" },
+      season: "Year-round",
+    },
+    {
+      id: 16,
+      name: "Annona muricata (Soursop / Graviola)",
+      image: "images/Soursop,_Annona_muricata.webp",
+      description: "Traditionally used against tumors/infections; contains acetogenins (lab cytotoxicity).",
+      benefits: ["Antioxidant", "Inflammation Relief", "Digestive Support"],
+      nutrients: { form: "Leaf/fruit tea", dose: "Short courses", safety: "Avoid chronic high doses" },
+      season: "Year-round",
+    },
+    {
+      id: 17,
+      name: "Garcinia kola (Bitter Kola)",
+      image: "images/Petits_colas_exposés_au_marché_Dantokpa_Bénin.webp",
+      description: "West African seed used as antioxidant tonic with respiratory and metabolic benefits.",
+      benefits: ["Antioxidant/Liver", "Respiratory", "Blood Sugar"],
+      nutrients: { form: "Chewed/ground", dose: "Small amounts", safety: "Monitor with diabetes meds" },
+      season: "Year-round",
+    },
+    {
+      id: 18,
+      name: "Ocimum sanctum (Holy Basil / Tulsi)",
+      image: "images/Holy-Basil-Tulsi-1245095474-770x533-1_jpg.avif",
+      description: "Adaptogen for stress resilience, immune and antiviral support, and blood sugar balance.",
+      benefits: ["Adaptogen/Immunity", "Antiviral", "Blood Sugar"],
+      nutrients: { form: "Tea/extract", dose: "Daily", safety: "Pregnancy caution; may lower BS" },
+      season: "Year-round",
+    },
+    {
+      id: 19,
+      name: "Bidens pilosa",
+      image: "images/Starr_080601-5248_Bidens_alba_var._radiata.webp",
+      description: "Common tropical herb studied for glucose control and anti-inflammatory effects.",
+      benefits: ["Blood Sugar (Diabetes)", "Anti-inflammatory", "Wound Healing"],
+      nutrients: { form: "Tea/leaf", dose: "Daily or cycles", safety: "Possible anticoagulant interaction" },
+      season: "Year-round",
+    },
+    {
+      id: 20,
+      name: "Boswellia spp. (Frankincense)",
+      image: "images/Boswellia spp. (Frankincense).webp",
+      description: "Resin with boswellic acids that strongly reduce inflammation; popular for joints/autoimmunity.",
+      benefits: ["Anti-inflammatory (Lupus/Arthritis)", "Joint Mobility", "Respiratory Support"],
+      nutrients: { form: "Resin extract", dose: "Standardized caps", safety: "Check interactions" },
+      season: "Year-round",
+    },
+    {
+      id: 21,
+      name: "Sclerocarya birrea (Marula)",
+      image: "images/Sclerocarya birrea (Marula).webp",
+      description: "Antioxidant-rich African tree; used for metabolic health, wound healing and immunity.",
+      benefits: ["Antioxidant", "Blood Sugar/Lipids", "Skin Repair"],
+      nutrients: { form: "Leaf/bark extract", dose: "As directed", safety: "Allergy possible" },
+      season: "Year-round",
+    },
+    {
+      id: 22,
+      name: "Harpagophytum procumbens (Devil's Claw)",
+      image: "images/Harpagophytum_procumbens_MHNT.BOT.2005.0.1243.webp",
+      description: "Root used to relieve joint/back pain with proven anti-inflammatory/analgesic actions.",
+      benefits: ["Pain Relief", "Anti-inflammatory", "Mobility"],
+      nutrients: { form: "Root extract", dose: "Standardized caps", safety: "Diabetes/anticoagulant interactions" },
+      season: "Year-round",
+    },
+    {
+      id: 23,
+      name: "Glycyrrhiza glabra (Licorice)",
+      image: "images/Glycyrrhiza glabra (Licorice).webp",
+      description: "Soothing antiviral root for mucous membranes, liver and respiratory support.",
+      benefits: ["Antiviral (Herpes Support)", "Mucosal Soothing", "Liver Support"],
+      nutrients: { form: "Tea/extract (DGL alt.)", dose: "Cycles", safety: "May raise BP; use DGL if needed" },
+      season: "Year-round",
+    },
+    {
+      id: 24,
+      name: "Tetrapleura tetraptera (Aridan)",
+      image: "images/Tetrapleura_tetraptera_MHNT.BOT.2017.10.22.webp",
+      description: "West African spice for arthritis, asthma and metabolic complaints; anti-inflammatory and glucose-lowering activity.",
+      benefits: ["Anti-inflammatory", "Blood Sugar", "Respiratory Support"],
+      nutrients: { form: "Pods/spice tea", dose: "Culinary/tea", safety: "Moderation; consult if pregnant" },
+      season: "Year-round",
     }
-    
-    function showFruitDetails(fruit) {
-        const formattedNutrients = Object.entries(fruit.nutrients)
-            .map(([nutrient, value]) => `• ${nutrient}: ${value}`)
-            .join('\n');
-        
-        alert(`Detailed view for ${fruit.name}\n\n` +
-              `Benefits: ${fruit.benefits.join(', ')}\n\n` +
-              `Nutrients:\n${formattedNutrients}`);
+  ];
+
+  // initial render
+  displayFruits(fruits);
+
+  // search
+  searchInput.addEventListener('input', function() {
+    const searchTerm = this.value.toLowerCase();
+    const filteredFruits = fruits.filter(fruit =>
+      fruit.name.toLowerCase().includes(searchTerm) ||
+      fruit.description.toLowerCase().includes(searchTerm)
+    );
+    displayFruits(filteredFruits);
+  });
+
+  // benefit filter
+  benefitFilter.addEventListener('change', function() {
+    const selectedBenefit = this.value;
+    if (!selectedBenefit) {
+      displayFruits(fruits);
+      return;
+    }
+    const filteredFruits = fruits.filter(fruit =>
+      fruit.benefits.some(benefit =>
+        benefit.toLowerCase().includes(selectedBenefit.toLowerCase()))
+    );
+    displayFruits(filteredFruits);
+  });
+
+  // render
+  function displayFruits(fruitsToDisplay) {
+    fruitContainer.innerHTML = '';
+
+    if (fruitsToDisplay.length === 0) {
+      fruitContainer.innerHTML = "<p>Seems the herbs not on the list, contact us and we'll get it to you!.</p>";
+      return;
     }
 
-    // Basic Add to Cart Function
-    function addToCart(item) {
-        console.log(`Added to cart: ${item.name}`);
-        alert(`${item.name} added to cart!`);
-        // You can later replace this with your real cart logic
-    }
+    fruitsToDisplay.forEach(fruit => {
+      const fruitElement = document.createElement('div');
+      fruitElement.className = 'fruit-item';
+      fruitElement.innerHTML = `
+        <img src="${fruit.image}" alt="${fruit.name}" loading="lazy">
+        <div class="fruit-info">
+          <h3>${fruit.name}</h3>
+          <p>${fruit.description}</p>
+          <div class="benefits">
+            ${fruit.benefits.map(benefit => `<span class="benefit-tag">${benefit}</span>`).join('')}
+          </div>
+          <div class="fruit-buttons">
+            <button class="view-details" data-id="${fruit.id}">View Details</button>
+            <button class="add-to-cart" data-id="${fruit.id}">Add to Cart <i class="fas fa-cart-plus"></i></button>
+          </div>
+        </div>
+      `;
+      fruitContainer.appendChild(fruitElement);
+    });
+
+    document.querySelectorAll('.view-details').forEach(button => {
+      button.addEventListener('click', function() {
+        const fruitId = parseInt(this.getAttribute('data-id'));
+        const selectedFruit = fruits.find(fruit => fruit.id === fruitId);
+        showFruitDetails(selectedFruit);
+      });
+    });
+
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+      button.addEventListener('click', function() {
+        const fruitId = parseInt(this.getAttribute('data-id'));
+        const selectedFruit = fruits.find(fruit => fruit.id === fruitId);
+        addToCart(selectedFruit);
+      });
+    });
+  }
+
+  // details popup
+  function showFruitDetails(fruit) {
+    const formattedNutrients = Object.entries(fruit.nutrients)
+      .map(([nutrient, value]) => `• ${nutrient}: ${value}`)
+      .join('\n');
+
+    alert(`Detailed view for ${fruit.name}\n\n` +
+          `Benefits: ${fruit.benefits.join(', ')}\n\n` +
+          `Details:\n${formattedNutrients}`);
+  }
+
+  // Add to Cart (placeholder)
+  function addToCart(item) {
+    console.log(`Added to cart: ${item.name}`);
+    alert(`${item.name} added to cart!`);
+  }
 });
