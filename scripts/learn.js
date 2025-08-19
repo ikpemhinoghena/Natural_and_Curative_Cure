@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       name: "Turmeric (Curcuma longa)",
-      image: "images/turmeric.jpg",
+      image: "images/Curcuma_longa_roots.webp",
       bio: "Turmeric is a well-studied anti-inflammatory spice (curcumin) used to reduce inflammation, support metabolic health and protect cells.",
       uses: [
         "Reduces inflammation (autoimmune support)",
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       name: "Neem Leaves (Azadirachta indica)",
-      image: "images/neem-leaves.jpg",
+      image: "images/Neem_tree_leaves.webp",
       bio: "Neem leaf is a traditional antimicrobial and immune-support herb used for infections, skin issues and metabolic support.",
       uses: [
         "Antibacterial and antifungal action",
@@ -127,8 +127,22 @@ document.addEventListener('DOMContentLoaded', () => {
       caution: "Not recommended in pregnancy; consult on dosing if on medication."
     },
     {
+      name: "Phyllanthus niruri (Stonebreaker)",
+      image: "images/mediumPhyllanthus niruri (Stonebreaker).webp",
+      bio: "Phyllanthus is a traditional herb for liver and kidney health with antiviral activity in lab studies (hepatitis, herpes) and supportive metabolic effects.",
+      uses: [
+        "Supports liver health and hepatitis care",
+        "Shows antiviral activity (hepatic viruses, herpes in labs)",
+        "Helps dissolve kidney stones historically",
+        "Supports blood sugar balance",
+        "Provides antioxidant and anti-inflammatory action"
+      ],
+      benefit: "liver/antiviral",
+      caution: "Avoid during pregnancy; check interactions with medications."
+    },
+    {
       name: "Peppermint",
-      image: "images/peppermint.jpg",
+      image: "images/Pfefferminze_natur_peppermint3.webp",
       bio: "Peppermint soothes digestion, clears sinuses and eases headaches — a gentle supportive herb for symptom relief.",
       uses: [
         "Soothes digestion and reduces bloating",
@@ -214,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       name: "Garcinia kola (Bitter Kola)",
-      image: "images/bitter-kola.jpg",
+      image: "images/Petits_colas_exposés_au_marché_Dantokpa_Bénin.webp",
       bio: "Bitter Kola seed is used in West Africa as an antioxidant tonic with respiratory and liver protective uses and some evidence for metabolic benefits.",
       uses: [
         "Antioxidant and liver protective action",
@@ -228,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       name: "Ocimum sanctum (Holy Basil / Tulsi)",
-      image: "images/tulsi.jpg",
+      image: "images/Holy-Basil-Tulsi-1245095474-770x533-1_jpg.avif",
       bio: "Holy Basil (Tulsi) is an adaptogen valued for stress resilience, immune support, antiviral activity and blood sugar balance.",
       uses: [
         "Adaptogen — reduces stress and supports immunity",
@@ -242,7 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       name: "Bidens pilosa",
-      image: "images/bidens-pilosa.jpg",
+      image: "images/Starr_080601-5248_Bidens_alba_var._radiata.webp",
       bio: "Bidens (Spanish Needle) is a common tropical herb used as food and medicine — studied for blood sugar regulation and anti-inflammatory effects.",
       uses: [
         "Helps improve glucose tolerance (diabetes support)",
@@ -255,22 +269,8 @@ document.addEventListener('DOMContentLoaded', () => {
       caution: "May interact with anticoagulants or diabetes meds — consult your provider."
     },
     {
-      name: "Phyllanthus niruri (Stonebreaker)",
-      image: "images/phyllanthus-niruri.jpg",
-      bio: "Phyllanthus is a traditional herb for liver and kidney health with antiviral activity in lab studies (hepatitis, herpes) and supportive metabolic effects.",
-      uses: [
-        "Supports liver health and hepatitis care",
-        "Shows antiviral activity (hepatic viruses, herpes in labs)",
-        "Helps dissolve kidney stones historically",
-        "Supports blood sugar balance",
-        "Provides antioxidant and anti-inflammatory action"
-      ],
-      benefit: "liver/antiviral",
-      caution: "Avoid during pregnancy; check interactions with medications."
-    },
-    {
       name: "Boswellia spp. (Frankincense)",
-      image: "images/frankincense.jpg",
+      image: "images/Boswellia spp. (Frankincense).webp",
       bio: "Frankincense resin contains boswellic acids that powerfully reduce inflammation — used for arthritis, autoimmune flare control and respiratory health.",
       uses: [
         "Reduces chronic inflammation (supports lupus/arthritis)",
@@ -284,7 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       name: "Sclerocarya birrea (Marula)",
-      image: "images/marula.jpg",
+      image: "images/Sclerocarya birrea (Marula).webp",
       bio: "Marula is an African fruit tree whose extracts are antioxidant-rich and used traditionally to support metabolic health, skin healing and general immunity.",
       uses: [
         "Antioxidant protection for cells",
@@ -298,7 +298,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       name: "Harpagophytum procumbens (Devil's Claw)",
-      image: "images/devils-claw.jpg",
+      image: "images/Harpagophytum_procumbens_MHNT.BOT.2005.0.1243.webp",
       bio: "Devil's Claw root is used to relieve joint and back pain with proven anti-inflammatory and analgesic actions — popular for arthritis and rheumatic conditions.",
       uses: [
         "Relieves osteoarthritis and rheumatic pain",
@@ -312,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       name: "Glycyrrhiza glabra (Licorice)",
-      image: "images/licorice.jpg",
+      image: "images/Glycyrrhiza glabra (Licorice).webp",
       bio: "Licorice root contains glycyrrhizin with antiviral and soothing effects — used for herpes, respiratory and liver support; use carefully due to cardiovascular effects in high doses.",
       uses: [
         "Antiviral activity (supports herpes symptom care)",
@@ -326,7 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       name: "Tetrapleura tetraptera (Aridan)",
-      image: "images/aridan.jpg",
+      image: "images/Tetrapleura_tetraptera_MHNT.BOT.2017.10.22.webp",
       bio: "Aridan (West African spice) is traditionally used for arthritis, asthma and metabolic complaints — shows anti-inflammatory and blood sugar-lowering activity in studies.",
       uses: [
         "Reduces inflammation and arthritis pain",
