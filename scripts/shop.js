@@ -227,28 +227,32 @@ document.addEventListener('DOMContentLoaded', function() {
   displayFruits(fruits);
 
   // search
-  searchInput.addEventListener('input', function() {
-    const searchTerm = this.value.toLowerCase();
-    const filteredFruits = fruits.filter(fruit =>
-      fruit.name.toLowerCase().includes(searchTerm) ||
-      fruit.description.toLowerCase().includes(searchTerm)
-    );
-    displayFruits(filteredFruits);
-  });
+  if (searchInput) {
+    searchInput.addEventListener('input', function() {
+      const searchTerm = this.value.toLowerCase();
+      const filteredFruits = fruits.filter(fruit =>
+        fruit.name.toLowerCase().includes(searchTerm) ||
+        fruit.description.toLowerCase().includes(searchTerm)
+      );
+      displayFruits(filteredFruits);
+    });
+  }
 
-  // benefit filter
-  benefitFilter.addEventListener('change', function() {
-    const selectedBenefit = this.value;
-    if (!selectedBenefit) {
-      displayFruits(fruits);
-      return;
-    }
-    const filteredFruits = fruits.filter(fruit =>
-      fruit.benefits.some(benefit =>
-        benefit.toLowerCase().includes(selectedBenefit.toLowerCase()))
-    );
-    displayFruits(filteredFruits);
-  });
+  // benefit filter (guarded — in case the select is commented out in HTML)
+  if (benefitFilter) {
+    benefitFilter.addEventListener('change', function() {
+      const selectedBenefit = this.value;
+      if (!selectedBenefit) {
+        displayFruits(fruits);
+        return;
+      }
+      const filteredFruits = fruits.filter(fruit =>
+        fruit.benefits.some(benefit =>
+          benefit.toLowerCase().includes(selectedBenefit.toLowerCase()))
+      );
+      displayFruits(filteredFruits);
+    });
+  }
 
   // render
   function displayFruits(fruitsToDisplay) {
@@ -271,14 +275,23 @@ document.addEventListener('DOMContentLoaded', function() {
             ${fruit.benefits.map(benefit => `<span class="benefit-tag">${benefit}</span>`).join('')}
           </div>
           <div class="fruit-buttons">
-            <button class="view-details" data-id="${fruit.id}">View Details</button>
-            <button class="add-to-cart" data-id="${fruit.id}">Add to Cart <i class="fas fa-cart-plus"></i></button>
+            <!-- Commented out original buttons (kept for easy restore) -->
+            <!-- <button class="view-details" data-id="${fruit.id}">View Details</button> -->
+            <!-- <button class="add-to-cart" data-id="${fruit.id}">Add to Cart <i class="fas fa-cart-plus"></i></button> -->
+
+            <!-- New WhatsApp "Get Now!" button -->
+            <a class="get-now" href="https://wa.me/2348163807836?text=${encodeURIComponent('Hi! I want to order ' + fruit.name)}" target="_blank" rel="noopener noreferrer">
+              Get Now!
+            </a>
           </div>
+          <p class="response-text">We respond immediately</p>
+          
         </div>
       `;
       fruitContainer.appendChild(fruitElement);
     });
 
+    // keep existing functionality for details/cart (still works if you uncomment buttons)
     document.querySelectorAll('.view-details').forEach(button => {
       button.addEventListener('click', function() {
         const fruitId = parseInt(this.getAttribute('data-id'));

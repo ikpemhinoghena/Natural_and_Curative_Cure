@@ -622,6 +622,151 @@ body {
     }
 }
 
+/* Style for new WhatsApp button */
+
+/* Get Now! (WhatsApp) button */
+.get-now {
+  display: inline-block;
+  background: #25D366;
+  color: #ffffff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.18);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.get-now:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(37, 211, 102, 0.22);
+}
+.get-now-btn {
+  display: block;
+  width: 80%;            /* make button longer */
+  margin: 12px auto;      /* centers the button */
+  padding: 12px 0;
+  background: #28a745;    /* green button */
+  color: white;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.get-now-btn:hover {
+  background: #218838;
+}
+
+/* Get Now! button - longer and centered inside the card */
+.get-now {
+  display: block;
+  width: 56%;               /* wider button */
+  max-width: 420px;         /* prevents huge buttons on very wide cards */
+  margin: 14px auto 0;      /* centers and adds top spacing */
+  padding: 12px 18px;
+  background: #25D366;      /* WhatsApp green */
+  color: #ffffff;
+  text-align: center;
+  font-weight: 700;
+  border-radius: 10px;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.18);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  font-size: 1.02rem;
+}
+
+.get-now:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.24);
+}
+
+/* optional — paste in your stylesheet */
+.highlight-herb {
+  box-shadow: 0 8px 28px rgba(37, 211, 102, 0.18);
+  border: 2px solid #25D366;
+  transition: box-shadow 0.2s, border 0.2s;
+}
+
+
+.response-text {
+  font-weight: bold;
+  text-align: center;
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* --- I'm Interested button (placed inside .herb-buttons) --- */
+.btn-interested {
+  display: block;                /* stays on its own line, centered */
+  /* margin: 12px auto 0;          top spacing, centered horizontally */
+  margin: 12px 0 0 0; /* top, right, bottom, left — button aligned to left */
+  width: 160px;                 /* pill width */
+  height: 48px;                 /* pill height */
+  line-height: 48px;            /* vertical centering for single-line text */
+  border-radius: 999px;         /* pill / circular edges */
+  text-align: center;
+  text-decoration: none;
+  color: var(--btn-text-color);
+  background-color: var(--primary-color);
+  font-weight: 600;
+  font-size: 0.98rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: background-color 280ms ease, transform 180ms ease, box-shadow 180ms ease;
+  -webkit-tap-highlight-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0 18px;
+  outline: none;
+}
+
+/* hover/focus: transition to secondary color and subtle scale */
+.btn-interested:hover,
+.btn-interested:focus {
+  background-color: var(--secondary-color);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+  text-decoration: none;
+  color: var(--btn-text-color);
+}
+
+/* active state (press) */
+.btn-interested:active {
+  transform: translateY(-1px) scale(0.995);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.10);
+}
+
+/* optional: smaller screens */
+@media (max-width: 480px) {
+  .btn-interested {
+    width: 140px;
+    height: 44px;
+    line-height: 44px;
+    font-size: 0.92rem;
+  }
+}
+
+
+/* .get-now {
+  display: inline-block;
+  padding: 10px 18px;
+  margin-top: 10px;
+  background: #25D366; WhatsApp green
+  color: #fff;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.get-now:hover {
+  background: #1ebd5a;
+} */
+
+
 /* about end */
 
 
