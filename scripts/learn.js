@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <!-- <button class="btn-cart" data-herb="${herb.name}">Add to Cart</button> -->
 
             <!-- New: "I'm Interested" links to shop page and anchor for this herb -->
-            <a class="btn-interested" href="shop.html#herb-${slug}">I'm Interestedo</a>
+            <a class="btn-interested" href="shop.html#herb-${slug}">I'm Interested</a>
           </div>
           <div class="herb-caution">
             ⚠️ <small>${herb.caution}</small>
