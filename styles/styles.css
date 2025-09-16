@@ -767,9 +767,6 @@ body {
 } */
 
 
-/* about end */
-
-
 /* Testimonial */
 
 /* Testimonial Header */
@@ -1328,192 +1325,119 @@ footer {
     margin-bottom: 0.5rem;
 }
 
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        position: absolute;
-        top: 80px;
-        left: 0;
-        right: 0;
-        background-color: var(--white);
-        flex-direction: column;
-        align-items: center;
-        padding: 1rem 0;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+/* Herb Slider Section */
+.herb-slider-section {
+    width: 100vw;
+    /* background: linear-gradient(90deg, #0f5132 0%, #ffd700 100%); */
+        background: linear-gradient(120deg, #14532d 0%, #2e8b57 60%, #e6c200 100%);
+
+    padding: 3rem 0 3rem 0;
+    margin: 0;
+    position: relative;
+    text-align: center;
+}
+
+.herb-slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 320px;
+    margin: 0 auto;
+}
+
+.herb-slide-card {
+    background: rgba(255,255,255,0.95);
+    border-radius: 1rem;
+    box-shadow: 0 4px 16px rgba(15,81,50,0.15);
+    padding: 2rem 1.5rem;
+    width: 320px;
+    max-width: 90vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: box-shadow 0.2s;
+}
+
+/* Add this for smooth slide transition */
+.herb-slide-card {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+}
+.herb-slide-card.slide-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.herb-slide-card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 3px solid #ffd700;
+}
+
+.herb-slide-card h3 {
+    margin: 0.5rem 0;
+    color: #0f5132;
+    font-size: 1.3rem;
+}
+
+.herb-slide-card p {
+    margin: 0.5rem 0 1rem 0;
+    font-size: 1rem;
+    color: #333;
+}
+
+.shop-now-btn {
+    background: #ffd700;
+    color: #0f5132;
+    padding: 0.5rem 1.2rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(15,81,50,0.10);
+    transition: background 0.2s;
+}
+.shop-now-btn:hover {
+    background: #0f5132;
+    color: #ffd700;
+}
+
+.slider-btn {
+    position: absolute;
+    top: 55%;
+    transform: translateY(-50%);
+    background: #0f5132;
+    color: #ffd700;
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 2;
+    box-shadow: 0 2px 8px rgba(15,81,50,0.15);
+    transition: background 0.2s;
+}
+.prev-btn { left: 2vw; }
+.next-btn { right: 2vw; }
+.slider-btn:hover {
+    background: #ffd700;
+    color: #0f5132;
+}
+@media (max-width: 600px) {
+    .herb-slide-card {
+        width: 95vw;
+        padding: 1rem;
     }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    .hamburger {
-        display: block;
-    }
-
-    .hero-content h2 {
-        font-size: 2rem;
-    }
-
-    .category-cards {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .footer-content {
-        flex-direction: column;
+    .slider-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 1.2rem;
+        left: 1vw;
+        right: 1vw;
     }
 }
-
-
-
-.recipe-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-  padding: 2rem;
-}
-
-.veg-card {
-  background: var(--white);
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease;
-  text-align: center;
-  padding: 1rem;
-}
-
-.veg-card:hover {
-  transform: translateY(-5px);
-}
-
-.veg-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 12px;
-  margin-bottom: 0.5rem;
-}
-
-.veg-card h3 {
-  margin: 0.5rem 0;
-  font-size: 1.2rem;
-}
-
-.veg-card p {
-  font-size: 0.9rem;
-  color: var(--dark-color);
-}
-
-.about-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 2rem;
-  padding: 2rem;
-}
-
-.about-grid .mission, .about-grid .story {
-  flex: 1 1 45%;
-  background-color: var(--light-color);
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
-}
-
-.team-section {
-  text-align: center;
-  padding: 2rem;
-}
-
-.team-cards {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-  margin-top: 1rem;
-}
-
-.team-card {
-  width: 250px;
-  background-color: var(--white);
-  border-radius: 10px;
-  padding: 1rem;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-}
-
-.team-card:hover {
-  transform: translateY(-5px);
-}
-
-.team-card img {
-  width: 100%;
-  border-radius: 10%;
-  object-fit: cover;
-  height: 200px;
-}
-
-.get-involved {
-  padding: 2rem;
-  background-color: var(--light-color);
-  text-align: center;
-  padding: 3rem 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 0 15px rgba(0,0,0,0.05);
-  margin: 2rem auto;
-  max-width: 700px;
-}
-
-.involve-options {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-  margin-top: 1.5rem;
-}
-
-.involve-box {
-  flex: 1 1 250px;
-  background: var(--white);
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
-}
-
-
-
-
-.get-involved h2 {
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
-.involve-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.involve-form input,
-.involve-form textarea {
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  border: 1px solid var(--light-color);
-  border-radius: 0.5rem;
-}
-
-.involve-form button {
-  padding: 0.75rem;
-  background: var(--primary-color);
-  color: var(--white);
-  font-size: 1rem;
-  border: none;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.involve-form button:hover {
-  background: var(--secondary-color);
-}
+<script src="scripts/herbSlider.js"></script>
