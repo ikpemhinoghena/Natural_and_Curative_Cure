@@ -91,3 +91,14 @@ hamburger?.addEventListener('click', function () {
   this.setAttribute('aria-expanded', String(!expanded));
   this.querySelector('i')?.classList.toggle('fa-times');
 });
+
+// FAQ dropdown logic
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const answer = this.nextElementSibling;
+            answer.classList.toggle('open');
+            this.classList.toggle('active');
+        });
+    });
+});

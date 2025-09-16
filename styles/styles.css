@@ -411,7 +411,7 @@ body {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('hero-placeholder.jpg');
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('hero.png');
     background-size: cover;
     background-position: center;
     height: 60vh;
@@ -995,7 +995,7 @@ nav {
 }
 
 .hero {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(../images/hero.jpg);
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(../images/hero.png);
     background-size: cover;
     background-position: center;
     height: 60vh;
@@ -1646,4 +1646,67 @@ footer {
         width: 98vw;
         padding: 1.2rem 0.5rem;
     }
+}
+
+/* FAQ Section */
+.faq-section {
+    background: #f9fbe7;
+    padding: 3rem 0 2.5rem 0;
+    text-align: center;
+}
+.faq-section h2 {
+    color: #14532d;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-family: 'Ubuntu', 'Roboto', sans-serif;
+}
+.faq-list {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: left;
+}
+.faq-item {
+    margin-bottom: 1.2rem;
+    border-radius: 1rem;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(44, 62, 80, 0.07);
+    overflow: hidden;
+}
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 1.08rem;
+    font-weight: bold;
+    color: #00c9a7;
+    padding: 1.1rem 1.2rem;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.18s;
+    font-family: 'Ubuntu', 'Roboto', sans-serif;
+    position: relative;
+}
+.faq-question::after {
+    content: '\f078';
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    float: right;
+    transition: transform 0.2s;
+}
+.faq-question.active::after {
+    transform: rotate(180deg);
+}
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    background: #f5fff9;
+    color: #2c3e50;
+    font-size: 1rem;
+    padding: 0 1.2rem;
+    transition: max-height 0.3s ease, padding 0.2s;
+}
+.faq-answer.open {
+    max-height: 200px;
+    padding: 0.9rem 1.2rem 1.1rem 1.2rem;
 }
