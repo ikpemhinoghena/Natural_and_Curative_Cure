@@ -102,3 +102,26 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// Responsive Hamburger Navigation
+document.addEventListener('DOMContentLoaded', function() {
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  hamburger.addEventListener('click', function () {
+    navLinks.classList.toggle('open');
+    hamburger.classList.toggle('open');
+    const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+    hamburger.setAttribute('aria-expanded', String(!expanded));
+  });
+
+  // Optional: Close nav when a link is clicked (on mobile)
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', function() {
+      if (window.innerWidth <= 900) {
+        navLinks.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+});
