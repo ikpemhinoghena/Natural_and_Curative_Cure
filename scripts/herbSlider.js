@@ -1,95 +1,97 @@
+// --- Modern 2-card Herb Slider using herbs from shop.js ---
+
+// Pick 5+ herbs from shop.js (update image paths if needed)
 const herbs = [
     {
-        img: "images/apple.jpg",
-        name: "Bitter Leaf",
-        info: "Cure for diabetes, malaria, and high blood pressure."
+        headline: "Cure for Diabetes",
+        img: "images/Ha2XcQG3RDu5mXpqJgq4gn-1600-80.webp",
+        desc: "Bitter Leaf helps lower blood sugar and fights inflammation. Trusted for diabetes management.",
+        link: "shop.html#bitter-leaf"
     },
     {
-        img: "images/herb2.jpg",
-        name: "Soursop",
-        info: "Effective for lupus, cancer, and boosting immunity."
+        headline: "Immunity & Viral Defense",
+        img: "images/irish-moss-2.webp",
+        desc: "Irish Moss boosts immunity and helps fight viruses. Perfect for overall wellness.",
+        link: "shop.html#irish-moss"
     },
     {
-        img: "images/herb3.jpg",
-        name: "Neem Leaf",
-        info: "Treats skin infections, ulcers, and detoxifies the body."
+        headline: "Skin & Detox Remedy",
+        img: "images/Neem_tree_leaves.webp",
+        desc: "Neem Leaves clear skin and detox the body. Used for infections and skin health.",
+        link: "shop.html#neem-leaves"
     },
     {
-        img: "images/herb4.jpg",
-        name: "Moringa",
-        info: "Cure for diabetes, inflammation, and improves energy."
+        headline: "Total Body Nutrition",
+        img: "images/moringa-870x455.webp",
+        desc: "Moringa is packed with nutrients and antioxidants. Supports energy and immune health.",
+        link: "shop.html#moringa"
     },
     {
-        img: "images/herb5.jpg",
-        name: "Garlic",
-        info: "Lowers cholesterol, fights infections, and supports heart health."
+        headline: "Cure for Inflammation",
+        img: "images/Curcuma_longa_roots.webp",
+        desc: "Turmeric reduces inflammation and supports liver health. Great for joint pain.",
+        link: "shop.html#turmeric"
     },
     {
-        img: "images/herb6.jpg",
-        name: "Turmeric",
-        info: "Reduces inflammation, supports joint health, and boosts immunity."
-    },
-    {
-        img: "images/herb7.jpg",
-        name: "Ginger",
-        info: "Aids digestion, relieves nausea, and fights infections."
-    },
-    {
-        img: "images/herb8.jpg",
-        name: "Aloe Vera",
-        info: "Heals skin, aids digestion, and boosts immune system."
+        headline: "Digestive Remedy",
+        img: "images/Pfefferminze_natur_peppermint3.webp",
+        desc: "Peppermint soothes digestion and relieves bloating. Ideal after meals.",
+        link: "shop.html#peppermint"
     }
 ];
 
-let current = 0;
-let autoSlideInterval;
+let herbCurrent = 0;
+let herbInterval;
 
-function showHerb(index, transition = true) {
+function showHerbs(startIndex, transition = true) {
     const slider = document.getElementById('herb-slider');
-    const herb = herbs[index];
-    slider.innerHTML = `
-        <div class="herb-slide-card${transition ? ' slide-in' : ''}">
-            <img src="${herb.img}" alt="${herb.name}">
-            <h3>${herb.name}</h3>
-            <p>${herb.info}</p>
-            <a href="shop.html" class="shop-now-btn">Shop Now</a>
-        </div>
-    `;
+    const cards = [];
+    for (let i = 0; i < 2; i++) {
+        const idx = (startIndex + i) % herbs.length;
+        const h = herbs[idx];
+        cards.push(`
+            <div class="herb-slide-card${transition ? ' slide-in' : ''}">
+                <h3 class="herb-slide-headline">${h.headline}</h3>
+                <img src="${h.img}" alt="${h.headline}">
+                <p>${h.desc}</p>
+                <a href="${h.link}" class="shop-now-btn">Shop Now</a>
+            </div>
+        `);
+    }
+    slider.innerHTML = cards.join('');
 }
 
 function nextHerb() {
-    current = (current + 1) % herbs.length;
-    showHerb(current);
+    herbCurrent = (herbCurrent + 2) % herbs.length;
+    showHerbs(herbCurrent);
 }
 
 function prevHerb() {
-    current = (current - 1 + herbs.length) % herbs.length;
-    showHerb(current);
+    herbCurrent = (herbCurrent - 2 + herbs.length) % herbs.length;
+    showHerbs(herbCurrent);
 }
 
-function startAutoSlide() {
-    autoSlideInterval = setInterval(() => {
-        nextHerb();
-    }, 3500); // 3.5 seconds per slide
+function startHerbAutoSlide() {
+    herbInterval = setInterval(nextHerb, 5000);
 }
 
-function stopAutoSlide() {
-    clearInterval(autoSlideInterval);
+function stopHerbAutoSlide() {
+    clearInterval(herbInterval);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    showHerb(current);
+    showHerbs(herbCurrent);
 
     document.getElementById('prevHerb').onclick = () => {
-        stopAutoSlide();
+        stopHerbAutoSlide();
         prevHerb();
-        startAutoSlide();
+        startHerbAutoSlide();
     };
     document.getElementById('nextHerb').onclick = () => {
-        stopAutoSlide();
+        stopHerbAutoSlide();
         nextHerb();
-        startAutoSlide();
+        startHerbAutoSlide();
     };
 
-    startAutoSlide();
+    startHerbAutoSlide();
 });
